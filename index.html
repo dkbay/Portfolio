@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lukas Kalkhoran | Portfolio</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+    <link rel="stylesheet" href="assets/css/main.min.css">
+    <script src="assets/js/main.js"></script>
 </head>
 <body>
     <header>
@@ -17,7 +15,6 @@
                 <div :is="currentComponent" :swap-component="swapComponent"></div>
         </div>
     </header>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
     <script>
     // Register components
     var landingPage = {
@@ -32,7 +29,7 @@
                 <p class="lang mb-0"><a href="#" @click="changeLocale('en')">EN</a> / <a href="#" @click="changeLocale('da')">DA</a></p>
             </div>
             <div class="card-body d-flex" id="links">
-                <a href="resume.pdf" class="card-link font-weight-bold text-light">{{ $t("resume") }}</a>
+                <a v-bind:href='$t("resumeLink")'  class="card-link font-weight-bold text-light">{{ $t("resume") }}</a>
                 <a @click="swapComponent('projects')" href="#" class="card-link font-weight-bold text-light"> {{ $t("projects") }} </a>
                 </div>
         </div>
@@ -44,12 +41,14 @@
                     heroTitle: 'Lukas Kalkhoran',
                     heroDescription: 'Let’s build the future of the web together!',
                     resume: 'Résumé',
+                    resumeLink: 'resumeen.pdf',
                     projects: 'Projects'
                 },
                 da: {
                     heroTitle: 'Lukas Kalkhoran',
                     heroDescription: 'Lad os bygge fremtidens internet sammen!',
                     resume: 'Résumé',
+                    resumeLink: 'resumeda.pdf',
                     projects: 'Projekter'
                 }
             }
