@@ -12,15 +12,37 @@
 <body>
     <header>
         <div class="container">
-            <div class="row" id="projects">
-                <div class="card shadow" style="width:30rem;">
-                    <div class="card-body">
-                        <h1>Projects</h1>
-                        <p>All of the projects I've been part of until now.</p>
+            <div class="row" id="projectsHero">
+                <div class="col-12 d-flex mb-5" id="projectsHeroCol">
+                    <div class="card shadow mt-5" style="width:30rem;">
+                        <div class="card-body">
+                            <h1>{{ $t("projects") }}</h1>
+                            <p>{{ $t("projectsDescription") }}</p>
+                        </div>
+                        <div class="card-body d-flex" id="links">
+                            <a @click="swapComponent('projects')" href="#" class="card-link font-weight-bold text-light"><i class="fas fa-arrow-left"></i>{{ $t("projectsBack") }}</a>
+                            </div>
                     </div>
-                    <div class="card-body d-flex" id="links">
-                        <a href="portfolio.pdf" class="card-link font-weight-bold text-light"><i class="fas fa-arrow-left"></i> Back</a>
-                      </div>
+                </div>
+                <div class="col-12 d-flex" id="projects">
+                    <div class="card shadow mt-5" style="width:30rem;" >
+                        <div class="card-body">
+                            <h1>{{ $t("lejeNuTitle") }}</h1>
+                            <p>{{ $t("lejeNuDescription") }}</p>
+                        </div>
+                        <div class="card-body d-flex" id="links">
+                            <a href="https://leje.nu" class="card-link font-weight-bold text-light">{{ $t("visit") }}</a>
+                        </div>
+                    </div>
+                    <div class="card shadow mt-5" style="width:30rem;">
+                            <div class="card-body">
+                                <h1>{{ $t("stkeTitle") }}</h1>
+                                <p>{{ $t("stkeDescription") }}</p>
+                            </div>
+                            <div class="card-body d-flex" id="links">
+                                <a href="https://leje.nu" class="card-link font-weight-bold text-light">{{ $t("visit") }}</a>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

@@ -14,39 +14,40 @@
 <body>
     <header>
         <div class="container" id="app">
-            <landing-page />
+                <div :is="currentComponent" :swap-component="swapComponent"></div>
         </div>
     </header>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
     <script>
     // Register components
-    Vue.component('landing-page', {
+    var landingPage = {
         template: `<div class="row" id="hero">
         <div class="card shadow" style="width:30rem;">
             <div class="card-body">
                 <div class="text-center mb-4">
                     <img src="assets/img/me.png" alt="A picture of Lukas Kalkhoran" class="rounded-circle">
                 </div>
-                <h1>{{ $t("herotitle") }}</h1>
+                <h1>{{ $t("heroTitle") }}</h1>
                 <p>{{ $t("heroDescription") }}</p>
                 <p class="lang mb-0"><a href="#" @click="changeLocale('en')">EN</a> / <a href="#" @click="changeLocale('da')">DA</a></p>
             </div>
             <div class="card-body d-flex" id="links">
-                <a href="portfolio.pdf" class="card-link font-weight-bold text-light">{{ $t("resume") }}</a>
-                <a href="/projects.html" class="card-link font-weight-bold text-light"> {{ $t("projects") }} </a>
+                <a href="resume.pdf" class="card-link font-weight-bold text-light">{{ $t("resume") }}</a>
+                <a @click="swapComponent('projects')" href="#" class="card-link font-weight-bold text-light"> {{ $t("projects") }} </a>
                 </div>
         </div>
     </div>`,
+        props: ['swapComponent'],
         i18n: {
             messages: {
                 en: {
-                    herotitle: 'Lukas Kalkhoran',
+                    heroTitle: 'Lukas Kalkhoran',
                     heroDescription: 'Let’s build the future of the web together!',
                     resume: 'Résumé',
                     projects: 'Projects'
                 },
                 da: {
-                    herotitle: 'Lukas Kalkhoran',
+                    heroTitle: 'Lukas Kalkhoran',
                     heroDescription: 'Lad os bygge fremtidens internet sammen!',
                     resume: 'Résumé',
                     projects: 'Projekter'
@@ -58,35 +59,91 @@
                     i18n.locale = locale;
                 }
         }
-    })
+    }
 
-    // Add translated locale messages
-    const messages = {
-        en: {
-            herotitle: 'Lukas Kalkhoran',
-            heroDescription: 'Let’s build the future of the web together!',
-            resume: 'Résumé',
-            projects: 'Projects'
+    var projects = {
+        template: `<div class="row" id="projectsHero">
+                <div class="col-12 d-flex mb-5" id="projectsHeroCol">
+                    <div class="card shadow mt-5" style="width:30rem;">
+                        <div class="card-body">
+                            <h1>{{ $t("projects") }}</h1>
+                            <p>{{ $t("projectsDescription") }}</p>
+                        </div>
+                        <div class="card-body d-flex" id="links">
+                            <a @click="swapComponent('landing-page')" href="#" class="card-link font-weight-bold text-light"><i class="fas fa-arrow-left"></i> {{ $t("projectsBack") }}</a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex" id="projects">
+                    <div class="card shadow mt-5" style="width:30rem;" >
+                        <div class="card-body">
+                            <h1>{{ $t("lejeNuTitle") }}</h1>
+                            <p>{{ $t("lejeNuDescription") }}</p>
+                        </div>
+                        <div class="card-body d-flex" id="links">
+                            <a href="https://leje.nu" class="card-link font-weight-bold text-light">{{ $t("visit") }}</a>
+                        </div>
+                    </div>
+                    <div class="card shadow mt-5" style="width:30rem;">
+                            <div class="card-body">
+                                <h1>{{ $t("stkeTitle") }}</h1>
+                                <p>{{ $t("stkeDescription") }}</p>
+                            </div>
+                            <div class="card-body d-flex" id="links">
+                                <a href="https://stke.io" class="card-link font-weight-bold text-light">{{ $t("visit") }}</a>
+                            </div>
+                        </div>
+                </div>
+            </div>`,
+        props: ['swapComponent'],
+        i18n: {
+            messages: {
+                en: {
+                    projects: 'Projects',
+                    projectsDescription: `All of the projects I've been part of until now.`,
+                    projectsBack: 'Back',
+                    visit: 'Visit',
+                    lejeNuTitle: 'Leje.nu',
+                    lejeNuDescription: 'Rental seraching platform.',
+                    stkeTitle: 'Stke.io',
+                    stkeDescription: 'Masternode hosting site.'
+                },
+                da: {
+                    projects: 'Projekter',
+                    projectsDescription: `Alle projekterne jeg har været del af indtil videre.`,
+                    projectsBack: 'Tilbage',
+                    visit: 'Besøg',
+                    lejeNuTitle: 'Leje.nu',
+                    lejeNuDescription: 'Boligsøgnings platform.',
+                    stkeTitle: 'Stke.io',
+                    stkeDescription: 'Masternode hosting platform.'
+                }
+            }
         },
-        da: {
-            herotitle: 'Lukas Kalkhoran',
-            heroDescription: 'Lad os bygge fremtidens internet sammen!',
-            resume: 'Résumé',
-            projects: 'Projekter'
+        methods: {
+                changeLocale(locale) {
+                    i18n.locale = locale;
+                }
         }
     }
 
     // Create VueI18n instance with options
     const i18n = new VueI18n({
         locale: 'en', // set locale
-        messages, // set locale messages
     })
 
     new Vue({ 
         i18n,
+        data: {
+            currentComponent: 'landing-page'
+        },
+        components: {
+            'landing-page': landingPage,
+            'projects': projects
+        },
         methods: {
-            changeLocale(locale) {
-                i18n.locale = locale;
+            swapComponent: function(component) {
+                this.currentComponent = component;
             }
         }
          }).$mount('#app')
