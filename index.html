@@ -28,6 +28,7 @@
                 <h1>{{ $t("heroTitle") }}</h1>
                 <p>{{ $t("heroDescription") }}</p>
                 <p class="lang mb-0"><a href="#" @click="changeLocale('en')">EN</a> / <a href="#" @click="changeLocale('da')">DA</a></p>
+                <p class="socials mb-0"><a class="mr-2" href="https://www.linkedin.com/in/dkbay/"><i class="fab fa-2x fa-linkedin"></i></a><a href="https://github.com/dkbay"><i class="fab fa-2x fa-github"></i></a></p>
             </div>
             <div class="card-body d-flex" id="links">
                 <a v-bind:href='$t("resumeLink")'  class="card-link font-weight-bold text-light">{{ $t("resume") }}</a>
