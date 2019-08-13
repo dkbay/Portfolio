@@ -53,3 +53,7 @@ a.text-light {
 #projects {
     justify-content: space-evenly;
 }
+
+#projectsHeroCol>div>#links {
+    background-color:#333;
+}
