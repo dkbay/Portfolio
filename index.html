@@ -122,6 +122,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 d-flex">
+                        <div class="card shadow mt-5" style="width:30rem;">
+                            <div class="card-body">
+                                <h1>{{ $t("maelkTitle") }}</h1>
+                                <p>{{ $t("maelkDescription") }}</p>
+                            </div>
+                            <div class="card-body d-flex" id="links">
+                                <a href="https://maelkevejen.eu" target="_blank" class="card-link font-weight-bold text-light">{{ $t("visit") }}</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>`,
         props: ['swapComponent'],
@@ -139,7 +150,9 @@
                     todoTitle: 'Todo app',
                     todoDescription: 'A simple todo app that saves todos in localstorage.',
                     petsTitle: 'Pet search',
-                    petsDescription: 'A search engine for the pet food from Cube World.'
+                    petsDescription: 'A search engine for the pet food from Cube World.',
+                    maelkTitle: 'Maelk website',
+                    maelkDescription: 'A simple website for the minecraft server Maelk.'
                 },
                 da: {
                     projects: 'Projekter',
@@ -153,7 +166,9 @@
                     todoTitle: 'Todo app',
                     todoDescription: 'En simpel huskeliste app der gemmer data i localstorage.',
                     petsTitle: 'Kæledyrs søgemaskine',
-                    petsDescription: 'En søgemaskine for kæledyrsmad i spillet Cube World.'
+                    petsDescription: 'En søgemaskine for kæledyrsmad i spillet Cube World.',
+                    maelkTitle: 'Maelk hjemmeside',
+                    maelkDescription: 'En simpel hjemmeside for minecraft serveren Maelk.'
                 }
             }
         },
