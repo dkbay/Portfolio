@@ -28,10 +28,10 @@
                 <h1>{{ $t("heroTitle") }}</h1>
                 <p>{{ $t("heroDescription") }}</p>
                 <p class="lang mb-0"><a href="#" @click="changeLocale('en')">EN</a> / <a href="#" @click="changeLocale('da')">DA</a></p>
-                <p class="socials mb-0"><a class="mr-2" href="https://www.linkedin.com/in/dkbay/"><i class="fab fa-2x fa-linkedin"></i></a><a href="https://github.com/dkbay"><i class="fab fa-2x fa-github"></i></a></p>
+                <p class="socials mb-0"><a class="mr-2" href="https://www.linkedin.com/in/dkbay/" target="_blank"><i class="fab fa-2x fa-linkedin"></i></a><a href="https://github.com/dkbay" target="_blank"><i class="fab fa-2x fa-github"></i></a></p>
             </div>
             <div class="card-body d-flex" id="links">
-                <a v-bind:href='$t("resumeLink")'  class="card-link font-weight-bold text-light">{{ $t("resume") }}</a>
+                <a v-bind:href='$t("resumeLink")'  class="card-link font-weight-bold text-light" target="_blank">{{ $t("resume") }}</a>
                 <a @click="swapComponent('projects')" href="#" class="card-link font-weight-bold text-light"> {{ $t("projects") }} </a>
                 </div>
         </div>
@@ -96,7 +96,29 @@
                                 <p>{{ $t("stkeDescription") }}</p>
                             </div>
                             <div class="card-body d-flex" id="links">
-                                <a href="https://stke.io" class="card-link font-weight-bold text-light">{{ $t("visit") }}</a>
+                                <a href="https://stke.io" target="_blank" class="card-link font-weight-bold text-light">{{ $t("visit") }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex">
+                        <div class="card shadow mt-5" style="width:30rem;">
+                            <div class="card-body">
+                                <h1>{{ $t("todoTitle") }}</h1>
+                                <p>{{ $t("todoDescription") }}</p>
+                            </div>
+                            <div class="card-body d-flex" id="links">
+                                <a href="https://todo.dkbay.com" target="_blank" class="card-link font-weight-bold text-light">{{ $t("visit") }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex">
+                        <div class="card shadow mt-5" style="width:30rem;">
+                            <div class="card-body">
+                                <h1>{{ $t("petsTitle") }}</h1>
+                                <p>{{ $t("petsDescription") }}</p>
+                            </div>
+                            <div class="card-body d-flex" id="links">
+                                <a href="https://pets.dkbay.com" target="_blank" class="card-link font-weight-bold text-light">{{ $t("visit") }}</a>
                             </div>
                         </div>
                     </div>
@@ -113,7 +135,11 @@
                     lejeNuTitle: 'Leje.nu',
                     lejeNuDescription: 'Rental searching platform.',
                     stkeTitle: 'Stke.io',
-                    stkeDescription: 'Masternode hosting site.'
+                    stkeDescription: 'Masternode hosting site.',
+                    todoTitle: 'Todo app',
+                    todoDescription: 'A simple todo app that saves todos in localstorage.',
+                    petsTitle: 'Pet search',
+                    petsDescription: 'A search engine for the pet food from Cube World.'
                 },
                 da: {
                     projects: 'Projekter',
@@ -123,7 +149,11 @@
                     lejeNuTitle: 'Leje.nu',
                     lejeNuDescription: 'Boligsøgnings platform.',
                     stkeTitle: 'Stke.io',
-                    stkeDescription: 'Masternode hosting platform.'
+                    stkeDescription: 'Masternode hosting platform.',
+                    todoTitle: 'Todo app',
+                    todoDescription: 'En simpel huskeliste app der gemmer data i localstorage.',
+                    petsTitle: 'Kæledyrs søgemaskine',
+                    petsDescription: 'En søgemaskine for kæledyrsmad i spillet Cube World.'
                 }
             }
         },
